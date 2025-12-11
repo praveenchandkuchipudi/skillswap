@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillSwap - Skill Detail</title>
+  <link rel="stylesheet" href="skill-detail.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1 class="logo">SkillSwap</h1>
+      <button class="back-btn" onclick="history.back()">← Back</button>
+    </header>
+
+    <div class="mentor-banner">
+      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=400&fit=crop&crop=face" alt="Mentor" class="mentor-photo">
+      <div class="mentor-overlay">
+        <div class="mentor-info">
+          <h2 class="mentor-name">Alex Johnson</h2>
+          <h3 class="skill-title">JavaScript & React Development</h3>
+          <div class="rating">
+            <span class="stars">★★★★★</span>
+            <span class="rating-text">4.9 (127 reviews)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="description-section">
+        <h3>About This Skill</h3>
+        <p>Learn modern JavaScript and React development from an experienced full-stack developer. I'll teach you everything from ES6 fundamentals to advanced React patterns, state management, and building real-world applications. Perfect for beginners and intermediate developers looking to level up their skills.</p>
+        
+        <div class="skill-highlights">
+          <span class="highlight">Beginner Friendly</span>
+          <span class="highlight">Hands-on Projects</span>
+          <span class="highlight">Industry Experience</span>
+        </div>
+      </div>
+
+      <div class="timeslots-section">
+        <h3>Available Time Slots</h3>
+        <div class="timeslots-grid">
+          <div class="timeslot" onclick="selectSlot(this)">
+            <div class="date">Today</div>
+            <div class="time">2:00 PM - 3:00 PM</div>
+            <div class="cost">5 credits</div>
+          </div>
+          <div class="timeslot" onclick="selectSlot(this)">
+            <div class="date">Tomorrow</div>
+            <div class="time">10:00 AM - 11:00 AM</div>
+            <div class="cost">5 credits</div>
+          </div>
+          <div class="timeslot" onclick="selectSlot(this)">
+            <div class="date">Dec 28</div>
+            <div class="time">4:00 PM - 5:00 PM</div>
+            <div class="cost">5 credits</div>
+          </div>
+          <div class="timeslot" onclick="selectSlot(this)">
+            <div class="date">Dec 29</div>
+            <div class="time">1:00 PM - 2:00 PM</div>
+            <div class="cost">5 credits</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <button class="btn chat-btn" onclick="startChat()">💬 Chat with Mentor</button>
+        <button class="btn book-btn" onclick="bookSession()" id="bookBtn" disabled>📅 Book Session</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="skill-detail.js"></script>
+</body>
+</html>

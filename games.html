@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillSwap - Games</title>
+  <link rel="stylesheet" href="games.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1 class="logo">SkillSwap Games</h1>
+      <button class="back-btn" onclick="window.location.href='dashboard.html'">Back to Dashboard</button>
+    </header>
+    
+    <div class="credits-info">
+      <div class="daily-credits">
+        <span>Daily Credits Earned: <span id="dailyCredits">0</span>/10</span>
+        <span>Total Credits: <span id="totalCredits">40</span></span>
+      </div>
+    </div>
+
+    <div class="games-grid">
+      <div class="game-card" onclick="startWordPuzzle()">
+        <div class="game-icon">🧩</div>
+        <h3>Word Puzzle</h3>
+        <p>Find hidden words and earn 2 credits per game</p>
+      </div>
+      
+      <div class="game-card" onclick="startSudoku()">
+        <div class="game-icon">🔢</div>
+        <h3>Sudoku</h3>
+        <p>Solve number puzzles and earn 3 credits per game</p>
+      </div>
+      
+      <div class="game-card" onclick="startRiddle()">
+        <div class="game-icon">🤔</div>
+        <h3>Riddles</h3>
+        <p>Solve brain teasers and earn 1 credit per riddle</p>
+      </div>
+    </div>
+
+    <!-- Word Puzzle Game -->
+    <div id="wordPuzzleGame" class="game-container" style="display: none;">
+      <div class="game-header">
+        <h2>Word Puzzle</h2>
+        <button onclick="closeGame()">✕</button>
+      </div>
+      <div class="word-puzzle">
+        <div class="target-word">
+          <span>Find the word: </span>
+          <span id="targetWord"></span>
+        </div>
+        <div class="letter-grid" id="letterGrid"></div>
+        <div class="found-word">
+          <input type="text" id="wordInput" placeholder="Enter the word">
+          <button onclick="checkWord()">Submit</button>
+        </div>
+        <div id="wordResult"></div>
+      </div>
+    </div>
+
+    <!-- Sudoku Game -->
+    <div id="sudokuGame" class="game-container" style="display: none;">
+      <div class="game-header">
+        <h2>Sudoku</h2>
+        <button onclick="closeGame()">✕</button>
+      </div>
+      <div class="sudoku-puzzle">
+        <div class="sudoku-grid" id="sudokuGrid"></div>
+        <div class="sudoku-controls">
+          <button onclick="checkSudoku()">Check Solution</button>
+          <button onclick="generateNewSudoku()">New Puzzle</button>
+        </div>
+        <div id="sudokuResult"></div>
+      </div>
+    </div>
+
+    <!-- Riddle Game -->
+    <div id="riddleGame" class="game-container" style="display: none;">
+      <div class="game-header">
+        <h2>Riddle Challenge</h2>
+        <button onclick="closeGame()">✕</button>
+      </div>
+      <div class="riddle-puzzle">
+        <div class="riddle-question" id="riddleQuestion"></div>
+        <div class="riddle-answer">
+          <input type="text" id="riddleInput" placeholder="Enter your answer">
+          <button onclick="checkRiddle()">Submit</button>
+        </div>
+        <div class="riddle-controls">
+          <button onclick="generateNewRiddle()">New Riddle</button>
+        </div>
+        <div id="riddleResult"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="games.js"></script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillSwap - Browse Skills</title>
+  <link rel="stylesheet" href="find-skills.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1 class="logo">SkillSwap</h1>
+      <button class="back-btn" onclick="window.close()">✕ Close</button>
+    </header>
+
+    <div class="content">
+      <h2 class="title">Browse Skills (Learning Mode)</h2>
+      
+      <div class="search-bar">
+        <input type="text" placeholder="🔍 Search for skills...">
+        <span class="search-icon">🔎</span>
+      </div>
+      
+      <div class="filters">
+        <select class="filter">
+          <option value="">Skill Category</option>
+          <option value="tech">Technology</option>
+          <option value="design">Design</option>
+          <option value="music">Music</option>
+          <option value="language">Language</option>
+        </select>
+        <select class="filter">
+          <option value="">Level</option>
+          <option value="beginner">Beginner</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="advanced">Advanced</option>
+        </select>
+        <select class="filter">
+          <option value="">Availability</option>
+          <option value="weekdays">Weekdays</option>
+          <option value="weekends">Weekends</option>
+          <option value="anytime">Anytime</option>
+        </select>
+        <select class="filter">
+          <option value="">Credit Cost</option>
+          <option value="free">Free</option>
+          <option value="low">1-20 Credits</option>
+          <option value="medium">21-50 Credits</option>
+          <option value="high">50+ Credits</option>
+        </select>
+        <select class="filter">
+          <option value="">Rating</option>
+          <option value="5">⭐ 5 Stars</option>
+          <option value="4">⭐ 4+ Stars</option>
+          <option value="3">⭐ 3+ Stars</option>
+        </select>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-card">
+          <img src="https://ui-avatars.com/api/?name=Sarah+Lee&size=80&background=6366f1&color=fff" alt="Mentor" class="mentor-photo">
+          <h3 class="skill-name">Web Development</h3>
+          <p class="skill-level">⚡ Intermediate</p>
+          <div class="skill-info">
+            <span class="credits">💰 25 credits</span>
+            <span class="rating">⭐ 4.8</span>
+          </div>
+          <button class="book-btn" onclick="bookSession('Sarah Lee', 'Web Development', '25', 'https://ui-avatars.com/api/?name=Sarah+Lee&size=80&background=6366f1&color=fff')">Book Session</button>
+        </div>
+
+        <div class="skill-card">
+          <img src="https://ui-avatars.com/api/?name=Mike+Chen&size=80&background=a855f7&color=fff" alt="Mentor" class="mentor-photo">
+          <h3 class="skill-name">Guitar Lessons</h3>
+          <p class="skill-level">⚡ Beginner</p>
+          <div class="skill-info">
+            <span class="credits">💰 15 credits</span>
+            <span class="rating">⭐ 5.0</span>
+          </div>
+          <button class="book-btn" onclick="bookSession('Mike Chen', 'Guitar Lessons', '15', 'https://ui-avatars.com/api/?name=Mike+Chen&size=80&background=a855f7&color=fff')">Book Session</button>
+        </div>
+
+        <div class="skill-card">
+          <img src="https://ui-avatars.com/api/?name=Emma+Davis&size=80&background=ec4899&color=fff" alt="Mentor" class="mentor-photo">
+          <h3 class="skill-name">UI/UX Design</h3>
+          <p class="skill-level">⚡ Advanced</p>
+          <div class="skill-info">
+            <span class="credits">💰 30 credits</span>
+            <span class="rating">⭐ 4.9</span>
+          </div>
+          <button class="book-btn" onclick="bookSession('Emma Davis', 'UI/UX Design', '30', 'https://ui-avatars.com/api/?name=Emma+Davis&size=80&background=ec4899&color=fff')">Book Session</button>
+        </div>
+
+        <div class="skill-card">
+          <img src="https://ui-avatars.com/api/?name=Alex+Kumar&size=80&background=10b981&color=fff" alt="Mentor" class="mentor-photo">
+          <h3 class="skill-name">Spanish Language</h3>
+          <p class="skill-level">⚡ Intermediate</p>
+          <div class="skill-info">
+            <span class="credits">💰 20 credits</span>
+            <span class="rating">⭐ 4.7</span>
+          </div>
+          <button class="book-btn" onclick="bookSession('Alex Kumar', 'Spanish Language', '20', 'https://ui-avatars.com/api/?name=Alex+Kumar&size=80&background=10b981&color=fff')">Book Session</button>
+        </div>
+
+        <div class="skill-card">
+          <img src="https://ui-avatars.com/api/?name=Lisa+Wong&size=80&background=f59e0b&color=fff" alt="Mentor" class="mentor-photo">
+          <h3 class="skill-name">Photography</h3>
+          <p class="skill-level">⚡ Beginner</p>
+          <div class="skill-info">
+            <span class="credits">💰 18 credits</span>
+            <span class="rating">⭐ 4.6</span>
+          </div>
+          <button class="book-btn" onclick="bookSession('Lisa Wong', 'Photography', '18', 'https://ui-avatars.com/api/?name=Lisa+Wong&size=80&background=f59e0b&color=fff')">Book Session</button>
+        </div>
+
+        <div class="skill-card">
+          <img src="https://ui-avatars.com/api/?name=Tom+Brown&size=80&background=ef4444&color=fff" alt="Mentor" class="mentor-photo">
+          <h3 class="skill-name">Python Programming</h3>
+          <p class="skill-level">⚡ Advanced</p>
+          <div class="skill-info">
+            <span class="credits">💰 35 credits</span>
+            <span class="rating">⭐ 5.0</span>
+          </div>
+          <button class="book-btn" onclick="bookSession('Tom Brown', 'Python Programming', '35', 'https://ui-avatars.com/api/?name=Tom+Brown&size=80&background=ef4444&color=fff')">Book Session</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    function bookSession(mentorName, skillName, credits, mentorPhoto) {
+      const sessionId = Date.now().toString();
+      const session = {
+        id: sessionId,
+        mentorName: mentorName,
+        skillName: skillName,
+        credits: credits,
+        mentorPhoto: mentorPhoto,
+        date: 'Tomorrow',
+        time: '2:00 PM',
+        status: 'upcoming',
+        bookedDate: new Date().toLocaleDateString()
+      };
+      
+      let bookedSessions = JSON.parse(localStorage.getItem('bookedSessions')) || [];
+      bookedSessions.push(session);
+      localStorage.setItem('bookedSessions', JSON.stringify(bookedSessions));
+      
+      alert(`Session booked with ${mentorName} for ${skillName}!\nCheck "My Sessions" to view details.`);
+      
+      // Disable the button
+      event.target.disabled = true;
+      event.target.textContent = 'Booked';
+    }
+  </script>
+</body>
+</html>

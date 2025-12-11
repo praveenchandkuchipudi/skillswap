@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillSwap - Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1 class="logo">SkillSwap</h1>
+      <div class="header-buttons">
+        <button class="profile-btn" onclick="window.location.href='profile.html'">Profile</button>
+        <button class="logout-btn" onclick="window.location.href='index.html'">Logout</button>
+      </div>
+    </header>
+    
+    <div class="profile-section">
+      <img id="profilePic" src="https://ui-avatars.com/api/?name=Praveen+Chand&size=80&background=667eea&color=fff" alt="Profile" class="profile-pic">
+      <h2 id="username" class="username">Praveen Chand</h2>
+      <div class="credits">
+        <span class="credits-label">You have</span>
+        <span class="credits-amount">40 credits</span>
+      </div>
+    </div>
+
+    <div class="quick-actions">
+      <button class="action-btn" onclick="window.open('post-skill.html', '_blank')">
+        <span class="icon">➕</span>
+        <span>Post a Skill</span>
+      </button>
+      <button class="action-btn" onclick="window.open('find-skills.html', '_blank')">
+        <span class="icon">🔎</span>
+        <span>Find Skills</span>
+      </button>
+      <button class="action-btn" onclick="window.location.href='my-sessions.html'">
+        <span class="icon">📅</span>
+        <span>My Sessions</span>
+      </button>
+      <button class="action-btn" onclick="window.location.href='games.html'">
+        <span class="icon">🎮</span>
+        <span>Play Games</span>
+      </button>
+    </div>
+  </div>
+  
+  <script>
+    // Load user data from localStorage
+    window.onload = function() {
+      const user = JSON.parse(localStorage.getItem('user'));
+      if (user) {
+        document.getElementById('username').textContent = user.name;
+        document.getElementById('profilePic').src = user.picture;
+      }
+    };
+  </script>
+</body>
+</html>

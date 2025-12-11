@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillSwap - Profile</title>
+  <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1 class="logo">SkillSwap</h1>
+      <button class="back-btn" onclick="window.location.href='dashboard.html'">← Back</button>
+    </header>
+
+    <div class="profile-card">
+      <div class="profile-header">
+        <img src="https://ui-avatars.com/api/?name=Praveen+Chand&size=120&background=667eea&color=fff" alt="Profile" class="profile-pic">
+        <div class="profile-info">
+          <h2 class="name">Praveen Chand</h2>
+          <p class="email">praveen.chand@email.com</p>
+          <div class="member-since">Member since March 2024</div>
+        </div>
+      </div>
+
+      <div class="stats-section">
+        <div class="stat-item">
+          <div class="stat-number">40</div>
+          <div class="stat-label">Credits</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">12</div>
+          <div class="stat-label">Sessions Completed</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">4.8</div>
+          <div class="stat-label">Rating</div>
+        </div>
+      </div>
+
+      <div class="info-section">
+        <h3>Personal Information</h3>
+        <div class="info-grid">
+          <div class="info-item">
+            <label>Full Name</label>
+            <span id="fullName">Praveen Chand</span>
+            <input type="text" id="fullNameInput" value="Praveen Chand" style="display: none;">
+          </div>
+          <div class="info-item">
+            <label>Email</label>
+            <span id="email">praveen.chand@email.com</span>
+            <input type="email" id="emailInput" value="praveen.chand@email.com" style="display: none;">
+          </div>
+          <div class="info-item">
+            <label>Phone</label>
+            <span id="phone">9392984294</span>
+            <input type="tel" id="phoneInput" value="9392984294" style="display: none;">
+          </div>
+          <div class="info-item">
+            <label>Location</label>
+            <span id="location">vijayawada,india</span>
+            <input type="text" id="locationInput" value="vijayawada,india" style="display: none;">
+          </div>
+        </div>
+      </div>
+
+      <div class="skills-section">
+        <h3>My Skills</h3>
+        <div class="skills-list">
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">React</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Web Design</span>
+        </div>
+      </div>
+
+      <div class="bio-section">
+        <h3>About Me</h3>
+        <p id="bio">Passionate full-stack developer with 5+ years of experience in web development. I love teaching and sharing knowledge with others. Specialized in modern JavaScript frameworks and backend technologies.</p>
+        <textarea id="bioInput" style="display: none;">Passionate full-stack developer with 5+ years of experience in web development. I love teaching and sharing knowledge with others. Specialized in modern JavaScript frameworks and backend technologies.</textarea>
+      </div>
+
+      <div class="action-buttons">
+        <button class="btn edit-btn" id="editBtn" onclick="toggleEdit()">Edit Profile</button>
+        <button class="btn save-btn" id="saveBtn" onclick="saveProfile()" style="display: none;">Save Changes</button>
+        <button class="btn cancel-btn" id="cancelBtn" onclick="cancelEdit()" style="display: none;">Cancel</button>
+        <button class="btn settings-btn">Settings</button>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    let isEditing = false;
+    
+    function toggleEdit() {
+      isEditing = true;
+      
+      // Hide display elements and show input fields
+      document.getElementById('fullName').style.display = 'none';
+      document.getElementById('fullNameInput').style.display = 'block';
+      document.getElementById('email').style.display = 'none';
+      document.getElementById('emailInput').style.display = 'block';
+      document.getElementById('phone').style.display = 'none';
+      document.getElementById('phoneInput').style.display = 'block';
+      document.getElementById('location').style.display = 'none';
+      document.getElementById('locationInput').style.display = 'block';
+      document.getElementById('bio').style.display = 'none';
+      document.getElementById('bioInput').style.display = 'block';
+      
+      // Toggle buttons
+      document.getElementById('editBtn').style.display = 'none';
+      document.getElementById('saveBtn').style.display = 'block';
+      document.getElementById('cancelBtn').style.display = 'block';
+    }
+    
+    function saveProfile() {
+      // Get updated values
+      const fullName = document.getElementById('fullNameInput').value;
+      const email = document.getElementById('emailInput').value;
+      const phone = document.getElementById('phoneInput').value;
+      const location = document.getElementById('locationInput').value;
+      const bio = document.getElementById('bioInput').value;
+      
+      // Update display elements
+      document.getElementById('fullName').textContent = fullName;
+      document.getElementById('email').textContent = email;
+      document.getElementById('phone').textContent = phone;
+      document.getElementById('location').textContent = location;
+      document.getElementById('bio').textContent = bio;
+      
+      // Update profile header
+      document.querySelector('.name').textContent = fullName;
+      document.querySelector('.profile-info .email').textContent = email;
+      
+      // Update profile picture
+      const profilePic = document.querySelector('.profile-pic');
+      profilePic.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(fullName)}&size=120&background=667eea&color=fff`;
+      
+      // Save to localStorage
+      const profileData = { fullName, email, phone, location, bio };
+      localStorage.setItem('profileData', JSON.stringify(profileData));
+      
+      exitEditMode();
+      alert('Profile updated successfully!');
+    }
+    
+    function cancelEdit() {
+      // Reset input values to original
+      document.getElementById('fullNameInput').value = document.getElementById('fullName').textContent;
+      document.getElementById('emailInput').value = document.getElementById('email').textContent;
+      document.getElementById('phoneInput').value = document.getElementById('phone').textContent;
+      document.getElementById('locationInput').value = document.getElementById('location').textContent;
+      document.getElementById('bioInput').value = document.getElementById('bio').textContent;
+      
+      exitEditMode();
+    }
+    
+    function exitEditMode() {
+      isEditing = false;
+      
+      // Show display elements and hide input fields
+      document.getElementById('fullName').style.display = 'block';
+      document.getElementById('fullNameInput').style.display = 'none';
+      document.getElementById('email').style.display = 'block';
+      document.getElementById('emailInput').style.display = 'none';
+      document.getElementById('phone').style.display = 'block';
+      document.getElementById('phoneInput').style.display = 'none';
+      document.getElementById('location').style.display = 'block';
+      document.getElementById('locationInput').style.display = 'none';
+      document.getElementById('bio').style.display = 'block';
+      document.getElementById('bioInput').style.display = 'none';
+      
+      // Toggle buttons
+      document.getElementById('editBtn').style.display = 'block';
+      document.getElementById('saveBtn').style.display = 'none';
+      document.getElementById('cancelBtn').style.display = 'none';
+    }
+    
+    // Load saved profile data on page load
+    window.onload = function() {
+      const savedData = localStorage.getItem('profileData');
+      if (savedData) {
+        const data = JSON.parse(savedData);
+        document.getElementById('fullName').textContent = data.fullName;
+        document.getElementById('email').textContent = data.email;
+        document.getElementById('phone').textContent = data.phone;
+        document.getElementById('location').textContent = data.location;
+        document.getElementById('bio').textContent = data.bio;
+        
+        // Update inputs
+        document.getElementById('fullNameInput').value = data.fullName;
+        document.getElementById('emailInput').value = data.email;
+        document.getElementById('phoneInput').value = data.phone;
+        document.getElementById('locationInput').value = data.location;
+        document.getElementById('bioInput').value = data.bio;
+        
+        // Update header
+        document.querySelector('.name').textContent = data.fullName;
+        document.querySelector('.profile-info .email').textContent = data.email;
+        
+        // Update profile picture
+        const profilePic = document.querySelector('.profile-pic');
+        profilePic.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(data.fullName)}&size=120&background=667eea&color=fff`;
+      }
+    };
+  </script>
+</body>
+</html>
