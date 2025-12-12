@@ -62,26 +62,43 @@
     }
 
     // Trigger Google Sign-In
-    function signInWithGoogle() {
-      // For demo purposes, simulate Google login
-      const demoUser = {
-        name: "Praveen Chand",
-        email: "praveen.chand@gmail.com",
-        picture: "https://ui-avatars.com/api/?name=Praveen+Chand&size=80&background=667eea&color=fff",
-        loginMethod: 'google'
-      };
-      
-      localStorage.setItem('user', JSON.stringify(demoUser));
-      
-      // Show loading state
+    async function signInWithGoogle() {
       const button = event.target;
       button.innerHTML = 'Signing in...';
       button.disabled = true;
       
-      // Simulate authentication delay
-      setTimeout(() => {
+      try {
+        const response = await fetch('http://localhost/backend/api/auth/login.php', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            email: 'praveen.chand@gmail.com',
+            password: 'password123'
+          })
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+          localStorage.setItem('user', JSON.stringify(data.user));
+          window.location.href = 'dashboard.html';
+        } else {
+          alert('Login failed: ' + data.message);
+          button.innerHTML = 'Continue with Google';
+          button.disabled = false;
+        }
+      } catch (error) {
+        alert('Connection error. Using demo mode.');
+        // Fallback to demo
+        const demoUser = {
+          name: "Praveen Chand",
+          email: "praveen.chand@gmail.com",
+          picture: "https://ui-avatars.com/api/?name=Praveen+Chand&size=80&background=667eea&color=fff",
+          loginMethod: 'google'
+        };
+        localStorage.setItem('user', JSON.stringify(demoUser));
         window.location.href = 'dashboard.html';
-      }, 1500);
+      }
     }
 
     // Decode JWT token (for actual implementation)

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillSwap - Video Session</title>
+  <link rel="stylesheet" href="video-session.css">
+</head>
+<body>
+  <div class="video-container">
+    <div class="video-header">
+      <h2>Learning Session with Alex Johnson</h2>
+      <button class="end-call-btn" onclick="endCall()">End Call</button>
+    </div>
+    
+    <div class="video-grid">
+      <div class="video-wrapper">
+        <video id="remoteVideo" autoplay playsinline></video>
+        <div class="video-label">Mentor</div>
+      </div>
+      <div class="video-wrapper">
+        <video id="localVideo" autoplay playsinline muted></video>
+        <div class="video-label">You</div>
+      </div>
+    </div>
+    
+    <div class="controls">
+      <button id="muteBtn" onclick="toggleMute()">🎤</button>
+      <button id="videoBtn" onclick="toggleVideo()">📹</button>
+      <button onclick="shareScreen()">🖥️</button>
+      <button onclick="toggleChat()">💬</button>
+    </div>
+    
+    <div class="chat-panel" id="chatPanel" style="display: none;">
+      <div class="chat-messages" id="chatMessages"></div>
+      <div class="chat-input">
+        <input type="text" id="messageInput" placeholder="Type a message...">
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+  </div>
+  
+  <script src="video-session.js"></script>
+</body>
+</html>

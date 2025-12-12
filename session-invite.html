@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillSwap - Session Invite</title>
+  <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1 class="logo">SkillSwap</h1>
+      <button class="back-btn" onclick="window.close()">✕ Close</button>
+    </header>
+
+    <div class="profile-card">
+      <div style="text-align: center; padding: 40px;">
+        <h2>Video Session Ready</h2>
+        <p style="margin: 20px 0; color: #6b7280;">Share this link with your mentor/student to join the video session:</p>
+        
+        <div style="background: #f3f4f6; padding: 15px; border-radius: 8px; margin: 20px 0; word-break: break-all; font-family: monospace;">
+          <span id="sessionLink"></span>
+        </div>
+        
+        <div style="display: flex; gap: 10px; justify-content: center; margin: 30px 0;">
+          <button class="btn edit-btn" onclick="copyLink()">📋 Copy Link</button>
+          <button class="btn edit-btn" onclick="joinNow()">🎥 Join Session</button>
+        </div>
+        
+        <p style="font-size: 14px; color: #9ca3af;">
+          💡 Tip: Both participants need to open this link for the video session to work
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    const sessionId = 'session-' + Date.now();
+    const sessionLink = `${window.location.origin}/video-session.html?session=${sessionId}`;
+    
+    document.getElementById('sessionLink').textContent = sessionLink;
+    
+    function copyLink() {
+      navigator.clipboard.writeText(sessionLink).then(() => {
+        alert('Link copied to clipboard!');
+      });
+    }
+    
+    function joinNow() {
+      window.open(sessionLink, '_blank', 'width=1200,height=800');
+    }
+  </script>
+</body>
+</html>

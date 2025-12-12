@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillSwap - Video Session</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; }
+    .header { background: #1f2937; color: white; padding: 15px; display: flex; justify-content: space-between; align-items: center; }
+    .end-btn { background: #dc2626; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; }
+    #meet { width: 100%; height: calc(100vh - 60px); }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h2>Learning Session</h2>
+    <button class="end-btn" onclick="endSession()">End Session</button>
+  </div>
+  <div id="meet"></div>
+  
+  <script src="https://meet.jit.si/external_api.js"></script>
+  <script>
+    const sessionId = new URLSearchParams(window.location.search).get('session') || 'skillswap-' + Date.now();
+    
+    const api = new JitsiMeetExternalAPI("meet.jit.si", {
+      roomName: sessionId,
+      parentNode: document.querySelector('#meet'),
+      configOverwrite: {
+        startWithAudioMuted: false,
+        startWithVideoMuted: false,
+        enableWelcomePage: false,
+        prejoinPageEnabled: false
+      },
+      interfaceConfigOverwrite: {
+        TOOLBAR_BUTTONS: ['microphone', 'camera', 'desktop', 'chat', 'hangup'],
+        SHOW_JITSI_WATERMARK: false,
+        SHOW_WATERMARK_FOR_GUESTS: false
+      }
+    });
+    
+    function endSession() {
+      api.dispose();
+      window.location.href = 'my-sessions.html';
+    }
+  </script>
+</body>
+</html>

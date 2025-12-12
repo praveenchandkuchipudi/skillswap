@@ -55,7 +55,8 @@ function loadSessions() {
 }
 
 function joinSession(sessionId) {
-  alert('Joining session... This would open the video call interface.');
+  const sessionUrl = `video-session.html?session=${sessionId}`;
+  window.open(sessionUrl, '_blank', 'width=1200,height=800');
 }
 
 function cancelSession(sessionId) {
